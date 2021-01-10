@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <form [formGroup]="reactiveForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          formControlName="username"
+          id="name"
+          class="form-control"
+          aria-describedby="helpId"
+        />
+        <small
+          id="helpId"
+          class="text-danger"
+          *ngIf="
+            reactiveForm.controls.username.touched &&
+            !reactiveForm.controls.username.valid
+          "
+        >
+        invalid name input
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="email">email</label>
+        <input
+          type="email"
+          formControlName="email"
+          id="email"
+          class="form-control"
+          aria-describedby="helpId"
+        />
+        <small
+          id="helpId"
+          class="text-danger"
+          *ngIf="
+            reactiveForm.controls.email.touched &&
+            !reactiveForm.controls.email.valid
+          "
+        >
+        invalid email input
+
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="status">status</label>
+        <select
+          class="form-select"
+          formControlName="status"
+          id="status"
+          aria-label=".form-select-lg example"
+        >
+          <option value="stable">Stable</option>
+          <option value="critical">Critical</option>
+          <option value="finished">Finished</option>
+        </select>
+
+        <small 
+        id="helpId" 
+        class="text-danger"
+        *ngIf="reactiveForm.controls.status.touched && !reactiveForm.controls.status.valid"
+        >        
+        invalid status input
+    </small>
+      </div>
+      <br>
+      <button class="btn btn-primary" (click)="onSubmit()">submit</button>
+    </form>
+  </div>
+</div>
