@@ -4,33 +4,31 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import {MatInputModule} from "@angular/material/input";
-// import {MatFormFieldModule} from '@angular/material/form-field';
-// import {MatSelectModule} from "@angular/material/select";
-// import {MatRadioModule} from '@angular/material/radio';
-// import {MatButtonModule} from '@angular/material/button';
-
 import { AppComponent } from './app.component';
 import { InterceptorInterceptor } from './shared/interceptor.interceptor';
-// import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { UsersTableComponent } from './components/users/users-table/users-table.component';
+import { NavComponent } from './components/nav/nav.component';
+import { HomeComponent } from './components/home/home.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { AddAndUpdateComponent } from './components/users/add-and-update/add-and-update.component';
+import { UsersComponent } from './components/users/users.componet';
 @NgModule({
   declarations: [
     AppComponent,
-    // ReactiveFormComponent
+    UsersTableComponent,
+    NavComponent,
+    HomeComponent,
+    SignUpComponent,
+    AddAndUpdateComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
-     AppRoutingModule,
-     FormsModule,
-     HttpClientModule,
-    // BrowserAnimationsModule,
-    // MatInputModule,
-    // MatFormFieldModule,
-    // MatSelectModule,
-     ReactiveFormsModule,
-    // MatRadioModule,
-    // MatButtonModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+   
   ],
   providers: [
     {
