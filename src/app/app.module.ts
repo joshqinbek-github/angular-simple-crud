@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AddAndUpdateComponent } from './components/users/add-and-update/add-and-update.component';
 import { UsersComponent } from './components/users/users.componet';
+import { TestComponent } from './components/test/test.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { UsersComponent } from './components/users/users.componet';
     HomeComponent,
     SignUpComponent,
     AddAndUpdateComponent,
-    UsersComponent
+    UsersComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

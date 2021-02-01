@@ -15,14 +15,14 @@ const routes: Routes = [
   ]},
   {path: 'login', component: SignUpComponent},
  
-
-
-
-
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+
