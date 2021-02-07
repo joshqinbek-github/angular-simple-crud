@@ -75,16 +75,17 @@ export class AddAndUpdateComponent implements OnInit, OnDestroy {
       if (!this.isEditMode) {
         this.usersService.addUser(this.form.value).subscribe((res) => {
           console.log('added');
+          this.usersService.userChanges.next(true);
         });
       } else {
         this.usersService
           .updateUser(this.editedId, this.form.value)
           .subscribe((res) => {
             console.log('edited!');
+            this.usersService.userChanges.next(true)
           });
       }
       this.formError = false;
-      this.usersService.userChanges.next(true);
       this.router.navigate(['/users']);
     } else {
       this.formError = true;
