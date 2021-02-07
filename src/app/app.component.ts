@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from './services/users.service';
 
 
 @Component({
@@ -7,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
+
+
   constructor() {}
 
   ngOnInit() {
-    
   }
 
-}
+ 
+  }
+
+
 

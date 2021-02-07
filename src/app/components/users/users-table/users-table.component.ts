@@ -1,22 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-users-table',
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.css']
 })
-export class UsersTableComponent implements OnInit {
+export class UsersTableComponent implements OnInit, OnDestroy {
 
-  users = [
-    {name: "josh", email: "josh@josh.com", id: 1},
-    {name: "bro", email: "bro@j.com", id: 2},
-    {name: "Daniel", email: "dani@2.com", id: 3},
-    {name: "Steve", email: "steve@jobs.com", id: 4}
-
-  ]
-  constructor() { }
+  users = [];
+  userSub: Subscription;
+  isLoading = true;
+  constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
+    this.getUsers();
   }
 
+  getUsers(){
+  this.userSub = this.usersService.users.subscribe(users => {
+    this.users = users;
+    this.isLoading = false;
+  })
+}
+  deleteUser(id){
+    let del = confirm("do you really want to delete " + this.users[id].username+"?");
+    if(del)
+     this.usersService.deleteUser(this.users[id].id).subscribe(res => {
+       this.usersService.userChanges.next(true);
+       alert(this.users[id].username+" deleted")
+       })
+    else 
+      return;
+  }
+  ngOnDestroy(){
+    this.userSub.unsubscribe();
+  }
 }

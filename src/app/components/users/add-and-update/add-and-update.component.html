@@ -1,29 +1,38 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <form>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" id="name" class="form-control">
-                  <small class="text-muted d-none">Error msg here</small>
+                  <input formControlName="username" type="text" id="name" class="form-control">
+                  <small class="text-muted text-red" *ngIf="(form.controls.username.invalid && form.controls.username.touched)">
+                     *Name field is not valid
+                  </small>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control">
-                    <small class="text-muted d-none">Error msg here</small>
+                    <input formControlName="email" type="email" id="email" class="form-control">
+                    <small class="text-muted text-red" *ngIf="(form.controls.email.invalid && form.controls.email.touched)">
+                        *Email field is not valid
+                     </small>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control">
-                    <small class="text-muted d-none">Error msg here</small>
+                    <input formControlName="password" type="password" id="password" class="form-control">
+                    <small class="text-muted text-red" *ngIf="(form.controls.password.invalid && form.controls.password.touched)">
+                        *Password field is not valid
+                     </small>
                 </div>
-
+                <small class="text-muted text-red" *ngIf="formError">
+                    *Form is invalid 
+                 </small> <br> <br>
                 <button class="btn btn-primary">
-                    Add 
+                    {{isEditMode? 'Update':'Add'}} 
                 </button>
             </form>
+           
         </div>
     </div>
 </div>

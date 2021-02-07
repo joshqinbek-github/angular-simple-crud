@@ -1,4 +1,7 @@
-<div class="container">
+<div *ngIf="isLoading" class="mr-auto ml-auto" style="width: fit-content;">
+   <app-loader></app-loader>
+</div>
+<div class="container" *ngIf="!isLoading">
     <div class="row">
         <div class="col-12">
             <a class="btn btn-success" [routerLink]="['add']">Add new User</a>
@@ -14,13 +17,13 @@
                 </thead>
                     <tbody>
                    
-                        <tr *ngFor="let user of users">
-                            <td scope="row">{{ user.id }}</td>
-                            <td> {{ user.name }}</td>
+                        <tr *ngFor="let user of users; let i = index">
+                            <td scope="row">{{ i }}</td>
+                            <td> {{ user.username }}</td>
                             <td>{{user.email}}</td>
                             <td>
-                                <a class="btn btn-success" [routerLink]="['update',user.id]" >Update</a>
-                                <button class="btn btn-danger">Delete</button>
+                                <a class="btn btn-success" [routerLink]="['update', i]" >Update</a>
+                                <button class="btn btn-danger" (click)="deleteUser(i)">Delete</button>
                             </td>
                         </tr>
                     </tbody>
