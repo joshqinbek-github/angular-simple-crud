@@ -1,29 +1,66 @@
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6 col-sm-12 mr-auto ml-auto">
-            <form>
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" id="name" class="form-control">
-                  <small class="text-muted d-none">Error msg here</small>
-                </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control">
-                    <small class="text-muted d-none">Error msg here</small>
-                </div>
+<div *ngIf="isLoading" class="mr-auto ml-auto" style="width: fit-content;">
+  <app-loader></app-loader>
+</div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control">
-                    <small class="text-muted d-none">Error msg here</small>
-                </div>
 
-                <button class="btn btn-primary">
-                    Submit
-                </button>
-            </form>
+<div class="container" *ngIf="!isLoading">
+  <div class="row">
+    <div class="col-lg-6 col-sm-12 mr-auto ml-auto">
+      <div class="alert alert-danger" *ngIf="error">
+        <p>{{ error }}
+        <button class="btn" style="float: right" (click)="error = null">
+          X
+        </button>
+      </p>
+      </div>
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <h3>{{ isLogin ? "Login" : "Register" }}</h3>
+      
+        <!-- <div class="form-group" *ngIf="!isLogin">
+          <label for="name">Username</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="username"
+            class="form-control"
+          />
+          <small class="text-muted d-none">Error msg here</small>
+        </div> -->
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+          />
+          <small class="text-muted d-none">Error msg here</small>
         </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <small class="text-muted d-none">Error msg here</small>
+        </div>
+
+        <button class="btn btn-primary" type="submit">
+          {{ isLogin ? "Login" : "Register" }}
+        </button>
+        <button
+          class="btn btn-success ml-3"
+          type="button"
+          (click)="isLogin = !isLogin"
+        >
+          switch to {{ isLogin ? "Register" : "Login" }} mode
+        </button>
+      </form>
     </div>
+  </div>
 </div>

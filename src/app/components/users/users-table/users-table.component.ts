@@ -12,6 +12,8 @@ export class UsersTableComponent implements OnInit, OnDestroy {
   users = [];
   userSub: Subscription;
   isLoading = true;
+
+
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
@@ -21,7 +23,11 @@ export class UsersTableComponent implements OnInit, OnDestroy {
   getUsers(){
   this.userSub = this.usersService.users.subscribe(users => {
     this.users = users;
-    this.isLoading = false;
+    if(users){
+      this.isLoading = false;
+    }else{
+      this.isLoading = true;    
+    }
   })
 }
   deleteUser(id){
@@ -29,7 +35,7 @@ export class UsersTableComponent implements OnInit, OnDestroy {
     if(del)
      this.usersService.deleteUser(this.users[id].id).subscribe(res => {
        this.usersService.userChanges.next(true);
-       alert(this.users[id].username+" deleted")
+      
        })
     else 
       return;

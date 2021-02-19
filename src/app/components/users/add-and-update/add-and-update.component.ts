@@ -31,7 +31,9 @@ export class AddAndUpdateComponent implements OnInit, OnDestroy {
         this.userSub = this.usersService.users.subscribe((users) => {
           this.editUser = users[+id];
           this.editedId = users[+id].id;
-          console.log(this.editedId, id)
+          if(!this.editUser){ 
+            this.router.navigate(["/users"])
+          }
         });
       }
     });

@@ -7,3 +7,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .text-red{
     color: red !important;
 }
+.nav-link{
+    cursor: pointer;
+}
+.spacer{
+    flex: 1 1  auto;
+}

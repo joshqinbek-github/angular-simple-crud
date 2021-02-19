@@ -5,15 +5,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InterceptorInterceptor } from './shared/interceptor.interceptor';
 import { UsersTableComponent } from './components/users/users-table/users-table.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AddAndUpdateComponent } from './components/users/add-and-update/add-and-update.component';
 import { UsersComponent } from './components/users/users.componet';
-import { TestComponent } from './components/test/test.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +22,6 @@ import { LoaderComponent } from './components/shared/loader/loader.component';
     SignUpComponent,
     AddAndUpdateComponent,
     UsersComponent,
-    TestComponent,
     LoaderComponent
   ],
   imports: [
@@ -35,11 +33,11 @@ import { LoaderComponent } from './components/shared/loader/loader.component';
    
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorInterceptor,
-      multi: true
-    }
+     {
+       provide: HTTP_INTERCEPTORS,
+       useClass: AuthInterceptorService,
+       multi: true
+     }
   ],
   bootstrap: [AppComponent]
 })
