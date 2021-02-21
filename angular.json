@@ -22,7 +22,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "_redirects",
+               "src/_redirect",
               {
                 "glob": "_redirects",
                 "input": "src",
@@ -92,7 +92,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "_redirects",
+               "src/_redirect",
               {
                 "glob": "_redirects",
                 "input": "src",
